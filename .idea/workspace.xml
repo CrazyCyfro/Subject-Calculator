@@ -30,13 +30,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c7ab843-0107-4650-9a37-51ac62c05d87" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/doritos/mtndew/gpacalculator/SubjectActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_subject.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_subject.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/subject-calculator.iml" />
+      <change type="DELETED" beforePath="D:\Users\Yan\AndroidStudioProjects\subject-calculator\GPACalculator.iml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_21_0_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_21_0_3.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_21_0_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_21_0_3.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GPA Calculator.iws" />
@@ -63,7 +65,7 @@
       <file leaf-file-name="GPA_Entry.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/doritos/mtndew/gpacalculator/GPA_Entry.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="384" max-vertical-offset="1080">
+            <state vertical-scroll-proportion="0.0" vertical-offset="384" max-vertical-offset="1464">
               <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
               <folding />
             </state>
@@ -75,26 +77,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="576" max-vertical-offset="5592">
               <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-              <folding>
-                <element signature="e#2627#5327#0" expanded="true" />
-                <element signature="e#2896#2925#0" expanded="true" />
-                <element signature="e#3044#3073#0" expanded="true" />
-                <element signature="e#3200#3229#0" expanded="true" />
-                <element signature="e#3350#3379#0" expanded="true" />
-                <element signature="e#3554#3592#0" expanded="true" />
-                <element signature="e#3716#3754#0" expanded="true" />
-                <element signature="e#3872#3910#0" expanded="true" />
-                <element signature="e#4102#4139#0" expanded="true" />
-                <element signature="e#4330#4367#0" expanded="true" />
-                <element signature="e#4638#4682#0" expanded="true" />
-                <element signature="e#5094#5137#0" expanded="true" />
-                <element signature="e#5316#5317#0" expanded="true" />
-                <element signature="e#5375#5909#0" expanded="true" />
-                <element signature="e#5744#5770#0" expanded="true" />
-                <element signature="e#5898#5899#0" expanded="true" />
-                <element signature="e#5981#6104#0" expanded="true" />
-                <element signature="e#6093#6094#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -102,9 +85,14 @@
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5370052" vertical-offset="0" max-vertical-offset="840">
-              <caret line="13" column="58" selection-start-line="13" selection-start-column="58" selection-end-line="13" selection-end-column="58" />
-              <folding />
+            <state vertical-scroll-proportion="0.91752577" vertical-offset="66" max-vertical-offset="864">
+              <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+              <folding>
+                <element signature="e#275#293#0" expanded="true" />
+                <element signature="e#421#439#0" expanded="true" />
+                <element signature="e#547#575#0" expanded="true" />
+                <element signature="e#686#718#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,7 +100,7 @@
       <file leaf-file-name="GPAActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/doritos/mtndew/gpacalculator/GPAActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1200">
+            <state vertical-scroll-proportion="0.0" vertical-offset="312" max-vertical-offset="1296">
               <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
               <folding />
             </state>
@@ -122,7 +110,7 @@
       <file leaf-file-name="SubjectActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/doritos/mtndew/gpacalculator/SubjectActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1008">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1080">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -132,11 +120,9 @@
       <file leaf-file-name="activity_subject.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_subject.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.0" vertical-offset="0" max-vertical-offset="432">
+            <state vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="432">
               <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding>
-                <element signature="e#535#556#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
           <provider editor-type-id="android-designer">
@@ -147,7 +133,7 @@
       <file leaf-file-name="colors.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
+            <state vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="432">
               <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
               <folding />
             </state>
@@ -157,7 +143,7 @@
       <file leaf-file-name="activity_main.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-90.0" vertical-offset="0" max-vertical-offset="3432">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2880" max-vertical-offset="3432">
               <caret line="120" column="53" selection-start-line="120" selection-start-column="53" selection-end-line="120" selection-end-column="53" />
               <folding />
             </state>
@@ -212,7 +198,7 @@
         <entry>
           <key>
             <ExternalProjectPojo>
-              <option name="name" value="GPACalculator" />
+              <option name="name" value="subject-calculator" />
               <option name="path" value="$PROJECT_DIR$" />
             </ExternalProjectPojo>
           </key>
@@ -223,7 +209,7 @@
                 <option name="path" value="$PROJECT_DIR$/app" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="GPACalculator" />
+                <option name="name" value="subject-calculator" />
                 <option name="path" value="$PROJECT_DIR$" />
               </ExternalProjectPojo>
             </list>
@@ -694,11 +680,6 @@
         </entry>
       </map>
     </option>
-    <option name="modificationStamps">
-      <map>
-        <entry key="$PROJECT_DIR$" value="4277921874475" />
-      </map>
-    </option>
     <option name="projectBuildClasspath">
       <map>
         <entry key="$PROJECT_DIR$">
@@ -954,6 +935,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/doritos/mtndew/gpacalculator/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_subject.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -989,8 +971,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -999,86 +979,10 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GPA Calculator" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GPA Calculator" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GPA Calculator" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GPA Calculator" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gpacalculator" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GPA Calculator" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="manifests" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -1316,11 +1220,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26631016" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3276515" sideWeight="0.48136246" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3276515" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33333334" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33224756" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1486631" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1335,6 +1238,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="96" y="96" width="1408" height="1008" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26631016" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1383,26 +1287,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1763" max-vertical-offset="5825">
           <caret line="85" column="43" selection-start-line="85" selection-start-column="43" selection-end-line="85" selection-end-column="43" />
-          <folding>
-            <element signature="e#2627#5327#0" expanded="true" />
-            <element signature="e#2896#2925#0" expanded="true" />
-            <element signature="e#3044#3073#0" expanded="true" />
-            <element signature="e#3200#3229#0" expanded="true" />
-            <element signature="e#3350#3379#0" expanded="true" />
-            <element signature="e#3554#3592#0" expanded="true" />
-            <element signature="e#3716#3754#0" expanded="true" />
-            <element signature="e#3872#3910#0" expanded="true" />
-            <element signature="e#4102#4139#0" expanded="true" />
-            <element signature="e#4330#4367#0" expanded="true" />
-            <element signature="e#4638#4682#0" expanded="true" />
-            <element signature="e#5094#5137#0" expanded="true" />
-            <element signature="e#5316#5317#0" expanded="true" />
-            <element signature="e#5375#5909#0" expanded="true" />
-            <element signature="e#5744#5770#0" expanded="true" />
-            <element signature="e#5898#5899#0" expanded="true" />
-            <element signature="e#5981#6104#0" expanded="true" />
-            <element signature="e#6093#6094#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1464,26 +1349,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4984" max-vertical-offset="5650">
           <caret line="210" column="13" selection-start-line="210" selection-start-column="13" selection-end-line="210" selection-end-column="13" />
-          <folding>
-            <element signature="e#2627#5327#0" expanded="true" />
-            <element signature="e#2896#2925#0" expanded="true" />
-            <element signature="e#3044#3073#0" expanded="true" />
-            <element signature="e#3200#3229#0" expanded="true" />
-            <element signature="e#3350#3379#0" expanded="true" />
-            <element signature="e#3554#3592#0" expanded="true" />
-            <element signature="e#3716#3754#0" expanded="true" />
-            <element signature="e#3872#3910#0" expanded="true" />
-            <element signature="e#4102#4139#0" expanded="true" />
-            <element signature="e#4330#4367#0" expanded="true" />
-            <element signature="e#4638#4682#0" expanded="true" />
-            <element signature="e#5094#5137#0" expanded="true" />
-            <element signature="e#5316#5317#0" expanded="true" />
-            <element signature="e#5375#5909#0" expanded="true" />
-            <element signature="e#5744#5770#0" expanded="true" />
-            <element signature="e#5898#5899#0" expanded="true" />
-            <element signature="e#5981#6104#0" expanded="true" />
-            <element signature="e#6093#6094#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1545,26 +1411,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2682" max-vertical-offset="3350">
           <caret line="126" column="7" selection-start-line="126" selection-start-column="7" selection-end-line="126" selection-end-column="7" />
-          <folding>
-            <element signature="e#2627#5327#0" expanded="true" />
-            <element signature="e#2896#2925#0" expanded="true" />
-            <element signature="e#3044#3073#0" expanded="true" />
-            <element signature="e#3200#3229#0" expanded="true" />
-            <element signature="e#3350#3379#0" expanded="true" />
-            <element signature="e#3554#3592#0" expanded="true" />
-            <element signature="e#3716#3754#0" expanded="true" />
-            <element signature="e#3872#3910#0" expanded="true" />
-            <element signature="e#4102#4139#0" expanded="true" />
-            <element signature="e#4330#4367#0" expanded="true" />
-            <element signature="e#4638#4682#0" expanded="true" />
-            <element signature="e#5094#5137#0" expanded="true" />
-            <element signature="e#5316#5317#0" expanded="true" />
-            <element signature="e#5375#5909#0" expanded="true" />
-            <element signature="e#5744#5770#0" expanded="true" />
-            <element signature="e#5898#5899#0" expanded="true" />
-            <element signature="e#5981#6104#0" expanded="true" />
-            <element signature="e#6093#6094#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1626,26 +1473,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="325" max-vertical-offset="2950">
           <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
-          <folding>
-            <element signature="e#2627#5327#0" expanded="true" />
-            <element signature="e#2896#2925#0" expanded="true" />
-            <element signature="e#3044#3073#0" expanded="true" />
-            <element signature="e#3200#3229#0" expanded="true" />
-            <element signature="e#3350#3379#0" expanded="true" />
-            <element signature="e#3554#3592#0" expanded="true" />
-            <element signature="e#3716#3754#0" expanded="true" />
-            <element signature="e#3872#3910#0" expanded="true" />
-            <element signature="e#4102#4139#0" expanded="true" />
-            <element signature="e#4330#4367#0" expanded="true" />
-            <element signature="e#4638#4682#0" expanded="true" />
-            <element signature="e#5094#5137#0" expanded="true" />
-            <element signature="e#5316#5317#0" expanded="true" />
-            <element signature="e#5375#5909#0" expanded="true" />
-            <element signature="e#5744#5770#0" expanded="true" />
-            <element signature="e#5898#5899#0" expanded="true" />
-            <element signature="e#5981#6104#0" expanded="true" />
-            <element signature="e#6093#6094#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1691,26 +1519,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1950">
           <caret line="60" column="115" selection-start-line="60" selection-start-column="115" selection-end-line="60" selection-end-column="115" />
-          <folding>
-            <element signature="e#2627#5327#0" expanded="true" />
-            <element signature="e#2896#2925#0" expanded="true" />
-            <element signature="e#3044#3073#0" expanded="true" />
-            <element signature="e#3200#3229#0" expanded="true" />
-            <element signature="e#3350#3379#0" expanded="true" />
-            <element signature="e#3554#3592#0" expanded="true" />
-            <element signature="e#3716#3754#0" expanded="true" />
-            <element signature="e#3872#3910#0" expanded="true" />
-            <element signature="e#4102#4139#0" expanded="true" />
-            <element signature="e#4330#4367#0" expanded="true" />
-            <element signature="e#4638#4682#0" expanded="true" />
-            <element signature="e#5094#5137#0" expanded="true" />
-            <element signature="e#5316#5317#0" expanded="true" />
-            <element signature="e#5375#5909#0" expanded="true" />
-            <element signature="e#5744#5770#0" expanded="true" />
-            <element signature="e#5898#5899#0" expanded="true" />
-            <element signature="e#5981#6104#0" expanded="true" />
-            <element signature="e#6093#6094#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1745,26 +1554,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1512">
           <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
-          <folding>
-            <element signature="e#2627#5327#0" expanded="true" />
-            <element signature="e#2896#2925#0" expanded="true" />
-            <element signature="e#3044#3073#0" expanded="true" />
-            <element signature="e#3200#3229#0" expanded="true" />
-            <element signature="e#3350#3379#0" expanded="true" />
-            <element signature="e#3554#3592#0" expanded="true" />
-            <element signature="e#3716#3754#0" expanded="true" />
-            <element signature="e#3872#3910#0" expanded="true" />
-            <element signature="e#4102#4139#0" expanded="true" />
-            <element signature="e#4330#4367#0" expanded="true" />
-            <element signature="e#4638#4682#0" expanded="true" />
-            <element signature="e#5094#5137#0" expanded="true" />
-            <element signature="e#5316#5317#0" expanded="true" />
-            <element signature="e#5375#5909#0" expanded="true" />
-            <element signature="e#5744#5770#0" expanded="true" />
-            <element signature="e#5898#5899#0" expanded="true" />
-            <element signature="e#5981#6104#0" expanded="true" />
-            <element signature="e#6093#6094#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1799,26 +1589,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2037">
           <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding>
-            <element signature="e#2627#5327#0" expanded="true" />
-            <element signature="e#2896#2925#0" expanded="true" />
-            <element signature="e#3044#3073#0" expanded="true" />
-            <element signature="e#3200#3229#0" expanded="true" />
-            <element signature="e#3350#3379#0" expanded="true" />
-            <element signature="e#3554#3592#0" expanded="true" />
-            <element signature="e#3716#3754#0" expanded="true" />
-            <element signature="e#3872#3910#0" expanded="true" />
-            <element signature="e#4102#4139#0" expanded="true" />
-            <element signature="e#4330#4367#0" expanded="true" />
-            <element signature="e#4638#4682#0" expanded="true" />
-            <element signature="e#5094#5137#0" expanded="true" />
-            <element signature="e#5316#5317#0" expanded="true" />
-            <element signature="e#5375#5909#0" expanded="true" />
-            <element signature="e#5744#5770#0" expanded="true" />
-            <element signature="e#5898#5899#0" expanded="true" />
-            <element signature="e#5981#6104#0" expanded="true" />
-            <element signature="e#6093#6094#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1837,26 +1608,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="750" max-vertical-offset="2425">
           <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
-          <folding>
-            <element signature="e#2627#5327#0" expanded="true" />
-            <element signature="e#2896#2925#0" expanded="true" />
-            <element signature="e#3044#3073#0" expanded="true" />
-            <element signature="e#3200#3229#0" expanded="true" />
-            <element signature="e#3350#3379#0" expanded="true" />
-            <element signature="e#3554#3592#0" expanded="true" />
-            <element signature="e#3716#3754#0" expanded="true" />
-            <element signature="e#3872#3910#0" expanded="true" />
-            <element signature="e#4102#4139#0" expanded="true" />
-            <element signature="e#4330#4367#0" expanded="true" />
-            <element signature="e#4638#4682#0" expanded="true" />
-            <element signature="e#5094#5137#0" expanded="true" />
-            <element signature="e#5316#5317#0" expanded="true" />
-            <element signature="e#5375#5909#0" expanded="true" />
-            <element signature="e#5744#5770#0" expanded="true" />
-            <element signature="e#5898#5899#0" expanded="true" />
-            <element signature="e#5981#6104#0" expanded="true" />
-            <element signature="e#6093#6094#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1916,7 +1668,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-90.0" vertical-offset="0" max-vertical-offset="3432">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2880" max-vertical-offset="3432">
           <caret line="120" column="53" selection-start-line="120" selection-start-column="53" selection-end-line="120" selection-end-column="53" />
           <folding />
         </state>
@@ -1927,11 +1679,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_subject.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.0" vertical-offset="0" max-vertical-offset="432">
+        <state vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="432">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="e#535#556#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer">
@@ -1958,34 +1708,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5592">
           <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-          <folding>
-            <element signature="e#2627#5327#0" expanded="true" />
-            <element signature="e#2896#2925#0" expanded="true" />
-            <element signature="e#3044#3073#0" expanded="true" />
-            <element signature="e#3200#3229#0" expanded="true" />
-            <element signature="e#3350#3379#0" expanded="true" />
-            <element signature="e#3554#3592#0" expanded="true" />
-            <element signature="e#3716#3754#0" expanded="true" />
-            <element signature="e#3872#3910#0" expanded="true" />
-            <element signature="e#4102#4139#0" expanded="true" />
-            <element signature="e#4330#4367#0" expanded="true" />
-            <element signature="e#4638#4682#0" expanded="true" />
-            <element signature="e#5094#5137#0" expanded="true" />
-            <element signature="e#5316#5317#0" expanded="true" />
-            <element signature="e#5375#5909#0" expanded="true" />
-            <element signature="e#5744#5770#0" expanded="true" />
-            <element signature="e#5898#5899#0" expanded="true" />
-            <element signature="e#5981#6104#0" expanded="true" />
-            <element signature="e#6093#6094#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5370052" vertical-offset="0" max-vertical-offset="840">
-          <caret line="13" column="58" selection-start-line="13" selection-start-column="58" selection-end-line="13" selection-end-column="58" />
-          <folding />
+        <state vertical-scroll-proportion="0.91752577" vertical-offset="66" max-vertical-offset="864">
+          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+          <folding>
+            <element signature="e#275#293#0" expanded="true" />
+            <element signature="e#421#439#0" expanded="true" />
+            <element signature="e#547#575#0" expanded="true" />
+            <element signature="e#686#718#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
