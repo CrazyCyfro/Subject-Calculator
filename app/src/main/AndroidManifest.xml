@@ -20,6 +20,10 @@
             android:name=".GPAActivity"
             android:label="@string/title_activity_gpa" >
         </activity>
+        <activity
+            android:name=".SubjectActivity"
+            android:label="@string/title_activity_subject" >
+        </activity>
     </application>
 
 </manifest>

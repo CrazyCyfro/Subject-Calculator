@@ -2,32 +2,32 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Yan Wei\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="C:\Users\Yan Wei\AndroidStudioProjects\GPACalculator\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-33645abac4ef3ac9ff5b6d750ad5da93228a8949.jar" />
-    </item>
-    <item
-        jar="C:\Users\Yan Wei\AndroidStudioProjects\GPACalculator\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jar="D:\Users\Yan\AndroidStudioProjects\GPACalculator\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="C:\Users\Yan Wei\AndroidStudioProjects\GPACalculator\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-d4908e7d598d4ee352d87378e59a7e2f4230eb34.jar" />
+        <dex dex="D:\Users\Yan\AndroidStudioProjects\GPACalculator\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-6d1ad091ffe9beef2b925af77eeeee747719d31e.jar" />
     </item>
     <item
-        jar="C:\Users\Yan Wei\AndroidStudioProjects\GPACalculator\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
+        jar="D:\Users\Yan\AndroidStudioProjects\GPACalculator\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="C:\Users\Yan Wei\AndroidStudioProjects\GPACalculator\app\build\intermediates\pre-dexed\debug\classes-ab2a974d5a428902feb5289577980ce404da01eb.jar" />
+        <dex dex="D:\Users\Yan\AndroidStudioProjects\GPACalculator\app\build\intermediates\pre-dexed\debug\classes-969e4a295a890d017c8f0e12beb8aedb7b23e13b.jar" />
     </item>
     <item
-        jar="C:\Users\Yan Wei\AndroidStudioProjects\GPACalculator\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
+        jar="D:\Users\Yan\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="D:\Users\Yan\AndroidStudioProjects\GPACalculator\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-395b573c99cec6df54c5edb5e658b3e2b1f0eff9.jar" />
+    </item>
+    <item
+        jar="D:\Users\Yan\AndroidStudioProjects\GPACalculator\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="C:\Users\Yan Wei\AndroidStudioProjects\GPACalculator\app\build\intermediates\pre-dexed\debug\classes-18287eb6222c75492dd3861ae0c6b52401317491.jar" />
+        <dex dex="D:\Users\Yan\AndroidStudioProjects\GPACalculator\app\build\intermediates\pre-dexed\debug\classes-239a07cd8a7d3eca293f31cf92bc3d34dc7fd748.jar" />
     </item>
 
 </items>
