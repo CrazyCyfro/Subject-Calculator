@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="gray">#363942</color>
-    <color name="brown">#382513</color>
-    <color name="dark_green">#284907</color>
-    <color name="light_green">#5C832F</color>
-    <color name="beige">#D8CAA8</color>
     <color name="dark_red">#8E2800</color>
     <color name="orange">#B64926</color>
     <color name="yellow">#FFB03B</color>
     <color name="cream">#FFF0A5</color>
-    <color name="turquoise">#468966</color>
+    <color name="dirty_green">#468966</color>
+
+    <color name="white">#FCFFF5</color>
+    <color name="beige">#D1DBBD</color>
+    <color name="light_blue">#91AA9D</color>
+    <color name="blue">#3E606F</color>
+    <color name="dark_blue">#193441</color>
+
+    <color name="brown">#382513</color>
+
+    <color name="red">#FF6138</color>
+    <color name="cream2">#FFFF9D</color>
+    <color name="light_green">#BEEB9F</color>
+    <color name="green">#79BD8F</color>
+    <color name="turquoise2">#00A388</color>
 </resources>

@@ -8,16 +8,15 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".GPADisplayActivity"
             android:label="@string/app_name" >
-
         </activity>
         <activity
-            android:name=".GPAActivity"
+            android:name=".GPACalculationActivity"
             android:label="@string/title_activity_gpa" >
         </activity>
         <activity
-            android:name=".SubjectActivity"
+            android:name=".SubjectDisplayActivity"
             android:label="@string/title_activity_subject" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

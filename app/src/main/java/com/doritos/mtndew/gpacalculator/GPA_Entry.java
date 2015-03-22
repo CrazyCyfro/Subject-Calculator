@@ -1,9 +1,12 @@
 package com.doritos.mtndew.gpacalculator;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Yan Wei on 24/2/2015.
  */
-public class GPA_Entry {
+public class GPA_Entry implements Parcelable{
 
     private String mAssignment;
     private double mWeightage;
@@ -50,6 +53,36 @@ public class GPA_Entry {
     }
 
 
+    //implement Parcelable to allow for transfer via Intents
+    public int describeContents() {
+        return 0;
+    }
+
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeString(mAssignment);
+        out.writeDouble(mWeightage);
+        out.writeDouble(mScore_received);
+        out.writeDouble(mTotal_score);
+    }
+
+    // this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods
+    public static final Parcelable.Creator<GPA_Entry> CREATOR = new Parcelable.Creator<GPA_Entry>() {
+        public GPA_Entry createFromParcel(Parcel in) {
+            return new GPA_Entry(in);
+        }
+
+        public GPA_Entry[] newArray(int size) {
+            return new GPA_Entry[size];
+        }
+    };
+
+    // example constructor that takes a Parcel and gives you an object populated with it's values
+    private GPA_Entry(Parcel in) {
+        mAssignment = in.readString();
+        mWeightage = in.readDouble();
+        mScore_received = in.readDouble();
+        mTotal_score = in.readDouble();
+    }
 
 
 }

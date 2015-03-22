@@ -20,7 +20,7 @@
 
             <EditText
             android:id="@+id/subject_name"
-            android:layout_width="240dp"
+            android:layout_width="400dp"
             android:layout_height="match_parent"
             android:background="@color/light_blue"
             android:gravity="center"
@@ -28,7 +28,7 @@
 
             <Button
                 android:id="@+id/addSubjectButton"
-                android:layout_width="120dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:background="@color/beige"
                 android:text="@string/button_submit"

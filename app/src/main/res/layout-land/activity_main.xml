@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:ems="9" >
+            android:ems="16" >
 
 
         </EditText>
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:ems="9" >
+            android:ems="16" >
 
 
         </EditText>
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:ems="9" >
+            android:ems="16" >
 
 
         </EditText>
@@ -66,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:ems="9" >
+            android:ems="16" >
 
 
         </EditText>
@@ -114,7 +114,7 @@
 
             <Button
                 android:id="@+id/clear_button"
-                android:layout_width="120dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:background="@color/dark_red"
                 android:text="@string/clear"
@@ -122,7 +122,7 @@
 
             <Button
                 android:id="@+id/calculate_button"
-                android:layout_width="120dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:background="@color/dirty_green"
                 android:text="@string/calculate"
