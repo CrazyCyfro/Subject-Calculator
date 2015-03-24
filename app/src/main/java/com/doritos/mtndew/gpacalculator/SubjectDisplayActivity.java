@@ -168,6 +168,7 @@ public class SubjectDisplayActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
                 //check if a alert dialog is already showing because of a long click
                 if (mAlert == null || !mAlert.isShowing()) {
+
                     //get the respective SubjectEntry, and store its position
                     mSelectedSubjectEntry = (SubjectEntry)adapter.getItemAtPosition(position);
                     mSelectedSubjectPosition = position;
@@ -194,6 +195,7 @@ public class SubjectDisplayActivity extends ActionBarActivity {
                 mSelectedSubjectEntry = (SubjectEntry)adapter.getItemAtPosition(position);
                 mSelectedSubjectPosition = position;
 
+                //on long click, show alert dialog to delete subject
                 mAlert = confirmSubjDeleteDialog();
                 mAlert.show();
 
@@ -287,7 +289,7 @@ public class SubjectDisplayActivity extends ActionBarActivity {
 
     //create alertdialog to confirm deletion of subject
     private AlertDialog confirmSubjDeleteDialog() {
-        AlertDialog deleteSubjDialog = new AlertDialog.Builder(this)
+        return new AlertDialog.Builder(this)
             .setTitle(getText(R.string.delete) + " " + mSelectedSubjectEntry.getmSubject_name())
             .setMessage(getText(R.string.delete_subj_cfm))
             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
@@ -305,7 +307,6 @@ public class SubjectDisplayActivity extends ActionBarActivity {
             })
             .setIcon(android.R.drawable.ic_dialog_alert)
             .create();
-            return deleteSubjDialog;
     }
 
     //define sample data and populate subject ListView

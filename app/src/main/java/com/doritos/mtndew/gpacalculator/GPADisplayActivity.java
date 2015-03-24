@@ -39,7 +39,6 @@ public class GPADisplayActivity extends Activity {
 
     //vars to get current selected gpa entry
     private GPAEntry mSelectedGPAEntry;
-    private int mSelectedGPAPosition;
 
     private Toast toast;
     private AlertDialog mAlert;
@@ -61,7 +60,6 @@ public class GPADisplayActivity extends Activity {
 
     //string keys for savedInstanceState
     public static final String GPA_ENTRY_ARRAYLIST = "gpa entry arraylist";
-    public static final String SELECTED_GPA_POSITION = "selected gpa position";
     public static final String ASSIGNMENT_NAME = "assignment name";
     public static final String ASSIGNMENT_WEIGHTAGE = "assignment weightage";
     public static final String ASSIGNMENT_SCORE_RECEIVED = "assignment score received";
@@ -89,7 +87,6 @@ public class GPADisplayActivity extends Activity {
         mFinalGPA = 0.0;
 
         mSelectedGPAEntry = new GPAEntry("",0.0,0.0,0.0);
-        mSelectedGPAPosition = 0;
 
         toast = Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT);
 
@@ -148,9 +145,9 @@ public class GPADisplayActivity extends Activity {
         mLVGPA.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
+                //check if an alert dialog is already showing
                 if (mAlert == null || !mAlert.isShowing()) {
                     mSelectedGPAEntry = (GPAEntry) adapter.getItemAtPosition(position);
-                    mSelectedGPAPosition = position;
 
                     mAssignment.setText(mSelectedGPAEntry.getAssignment());
                     mWeightage.setText(String.valueOf(mSelectedGPAEntry.getWeightage()));
@@ -164,8 +161,8 @@ public class GPADisplayActivity extends Activity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapter, View v, int position, long id) {
                 mSelectedGPAEntry = (GPAEntry)adapter.getItemAtPosition(position);
-                mSelectedGPAPosition = position;
 
+                //on long click, show alert dialog to delete assignment
                 mAlert = confirmAssignDeleteDialog();
                 mAlert.show();
 
@@ -209,30 +206,39 @@ public class GPADisplayActivity extends Activity {
                 else if (Double.parseDouble(mScoreReceived.getText().toString()) > Double.parseDouble(mTotalScore.getText().toString())) {
                     mScoreReceived.setError(getText(R.string.score_received_total_error));
                 }
-                //check if weightage in weightage field will exceed 100% if entered
                 else {
+                    //determine if entry is supposed to be new or an edit of existing assignment
                     Boolean newEntry = true;
                     for (GPAEntry mRaw: mGPAArray) {
+                        //check entered assignment name against all existing assignments
                         if (mAssignment.getText().toString().equals(mRaw.getAssignment())) {
                             calculateWeightage();
                             if ((mTotalWeightage - mRaw.getWeightage()+Double.parseDouble(mWeightage.getText().toString())) <= 100) {
+                                //if assignment exists, edit it
                                 mRaw.setWeightage(Double.parseDouble(mWeightage.getText().toString()));
                                 mRaw.setScore_received(Double.parseDouble(mScoreReceived.getText().toString()));
                                 mRaw.setTotal_score(Double.parseDouble(mTotalScore.getText().toString()));
 
                                 mGPAAdapter.notifyDataSetChanged();
                                 calculateWeightage();
+
+                                //therefore not a new entry
                                 newEntry = false;
 
                                 break;
                             } else {
+
+                                //if new weightage for assignment exceeds available weightage from other assignments, display error
                                 mWeightage.setError(getText(R.string.total_weightage_101_error)+" "+String.valueOf(Double.parseDouble(decimalFormatter.format(100-mTotalWeightage+mRaw.getWeightage())))+"%");
                                 newEntry = false;
                                 break;
                             }
                         }
                     }
+
+
                     if (newEntry) {
+                        //check again if weightage for new entry exceeds available weightage
                         if ((mTotalWeightage+Double.parseDouble(mWeightage.getText().toString())) > 100) {
                             //format value of remaining weightage to avoid showing long chain of decimals (value might be wrong by 0.1 if 2 dp weightages are entered :/ )
                             mWeightage.setError(getText(R.string.total_weightage_101_error)+" "+String.valueOf(Double.parseDouble(decimalFormatter.format(100-mTotalWeightage)))+"%");
@@ -395,7 +401,7 @@ public class GPADisplayActivity extends Activity {
 
     //create alertdialog to confirm deletion of assignment
     private AlertDialog confirmAssignDeleteDialog() {
-        AlertDialog deleteAssignDialog = new AlertDialog.Builder(this)
+        return new AlertDialog.Builder(this)
                 .setTitle(getText(R.string.delete)+" "+mSelectedGPAEntry.getAssignment())
                 .setMessage(getText(R.string.delete_assign_cfm))
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
@@ -411,7 +417,6 @@ public class GPADisplayActivity extends Activity {
                 })
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .create();
-        return deleteAssignDialog;
     }
 
     private void startGPAIntent () {

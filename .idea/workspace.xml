@@ -35,12 +35,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c7ab843-0107-4650-9a37-51ac62c05d87" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_3_1.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/doritos/mtndew/gpacalculator/GPADisplayActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/doritos/mtndew/gpacalculator/GPADisplayActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/doritos/mtndew/gpacalculator/SubjectDisplayActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/doritos/mtndew/gpacalculator/SubjectDisplayActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_21_0_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_21_0_3.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GPA Calculator.iws" />
@@ -64,38 +60,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SubjectDisplayActivity.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SubjectDisplayActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/doritos/mtndew/gpacalculator/SubjectDisplayActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6788" max-vertical-offset="9312">
-              <caret line="287" column="55" selection-start-line="287" selection-start-column="4" selection-end-line="287" selection-end-column="55" />
+            <state vertical-scroll-proportion="0.48850575" vertical-offset="7065" max-vertical-offset="9336">
+              <caret line="305" column="17" selection-start-line="305" selection-start-column="17" selection-end-line="305" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5196#6111#0" expanded="true" />
                 <element signature="e#5380#5422#0" expanded="true" />
                 <element signature="e#6100#6101#0" expanded="true" />
-                <element signature="e#6214#7463#0" expanded="true" />
-                <element signature="e#7452#7453#0" expanded="true" />
-                <element signature="e#7513#7962#0" expanded="true" />
-                <element signature="e#7951#7952#0" expanded="true" />
-                <element signature="e#11454#11478#0" expanded="true" />
-                <element signature="e#11553#11586#0" expanded="true" />
-                <element signature="e#11641#11952#0" expanded="true" />
-                <element signature="e#11937#11938#0" expanded="true" />
-                <element signature="e#12010#12195#0" expanded="true" />
-                <element signature="e#12180#12181#0" expanded="true" />
+                <element signature="e#6214#7464#0" expanded="true" />
+                <element signature="e#7453#7454#0" expanded="true" />
+                <element signature="e#7514#8032#0" expanded="true" />
+                <element signature="e#8021#8022#0" expanded="true" />
+                <element signature="e#11500#11524#0" expanded="true" />
+                <element signature="e#11599#11632#0" expanded="true" />
+                <element signature="e#11687#11998#0" expanded="true" />
+                <element signature="e#11983#11984#0" expanded="true" />
+                <element signature="e#12056#12241#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GPADisplayActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="GPADisplayActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/doritos/mtndew/gpacalculator/GPADisplayActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55172414" vertical-offset="4440" max-vertical-offset="11016">
-              <caret line="224" column="49" selection-start-line="224" selection-start-column="49" selection-end-line="224" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1554" max-vertical-offset="11136">
+              <caret line="90" column="16" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
               <folding>
-                <element signature="e#11012#11055#0" expanded="true" />
+                <element signature="e#11252#11295#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1367,8 +1362,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_gpa_display.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/doritos/mtndew/gpacalculator/SubjectDisplayActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/doritos/mtndew/gpacalculator/GPADisplayActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/doritos/mtndew/gpacalculator/SubjectDisplayActivity.java" />
       </list>
     </option>
   </component>
@@ -1794,7 +1789,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="325" max-vertical-offset="2950">
           <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
           <folding>
-            <element signature="e#11012#11055#0" expanded="true" />
+            <element signature="e#11252#11295#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1842,7 +1837,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1950">
           <caret line="60" column="115" selection-start-line="60" selection-start-column="115" selection-end-line="60" selection-end-column="115" />
           <folding>
-            <element signature="e#11012#11055#0" expanded="true" />
+            <element signature="e#11252#11295#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1878,7 +1873,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1512">
           <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
           <folding>
-            <element signature="e#11012#11055#0" expanded="true" />
+            <element signature="e#11252#11295#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1914,7 +1909,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2037">
           <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
           <folding>
-            <element signature="e#11012#11055#0" expanded="true" />
+            <element signature="e#11252#11295#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1935,7 +1930,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="750" max-vertical-offset="2425">
           <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
           <folding>
-            <element signature="e#11012#11055#0" expanded="true" />
+            <element signature="e#11252#11295#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2176,35 +2171,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/doritos/mtndew/gpacalculator/GPADisplayActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1554" max-vertical-offset="11136">
+          <caret line="90" column="16" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
+          <folding>
+            <element signature="e#11252#11295#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/doritos/mtndew/gpacalculator/SubjectDisplayActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6788" max-vertical-offset="9312">
-          <caret line="287" column="55" selection-start-line="287" selection-start-column="4" selection-end-line="287" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.48850575" vertical-offset="7065" max-vertical-offset="9336">
+          <caret line="305" column="17" selection-start-line="305" selection-start-column="17" selection-end-line="305" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5196#6111#0" expanded="true" />
             <element signature="e#5380#5422#0" expanded="true" />
             <element signature="e#6100#6101#0" expanded="true" />
-            <element signature="e#6214#7463#0" expanded="true" />
-            <element signature="e#7452#7453#0" expanded="true" />
-            <element signature="e#7513#7962#0" expanded="true" />
-            <element signature="e#7951#7952#0" expanded="true" />
-            <element signature="e#11454#11478#0" expanded="true" />
-            <element signature="e#11553#11586#0" expanded="true" />
-            <element signature="e#11641#11952#0" expanded="true" />
-            <element signature="e#11937#11938#0" expanded="true" />
-            <element signature="e#12010#12195#0" expanded="true" />
-            <element signature="e#12180#12181#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/doritos/mtndew/gpacalculator/GPADisplayActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55172414" vertical-offset="4440" max-vertical-offset="11016">
-          <caret line="224" column="49" selection-start-line="224" selection-start-column="49" selection-end-line="224" selection-end-column="49" />
-          <folding>
-            <element signature="e#11012#11055#0" expanded="true" />
+            <element signature="e#6214#7464#0" expanded="true" />
+            <element signature="e#7453#7454#0" expanded="true" />
+            <element signature="e#7514#8032#0" expanded="true" />
+            <element signature="e#8021#8022#0" expanded="true" />
+            <element signature="e#11500#11524#0" expanded="true" />
+            <element signature="e#11599#11632#0" expanded="true" />
+            <element signature="e#11687#11998#0" expanded="true" />
+            <element signature="e#11983#11984#0" expanded="true" />
+            <element signature="e#12056#12241#0" expanded="true" />
           </folding>
         </state>
       </provider>
