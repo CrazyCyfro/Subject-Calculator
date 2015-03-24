@@ -2,6 +2,7 @@ package com.doritos.mtndew.gpacalculator;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,6 +18,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -31,6 +36,7 @@ public class SubjectDisplayActivity extends ActionBarActivity {
 
     private ListView mLVSubject;
 
+
     private AlertDialog mAlert;
 
     private ArrayList<SubjectEntry> mSubjectArray;
@@ -40,6 +46,11 @@ public class SubjectDisplayActivity extends ActionBarActivity {
     private SubjectEntry mSelectedSubjectEntry;
     private int mSelectedSubjectPosition;
 
+    //SharedPreferences and Gson to store data
+    SharedPreferences.Editor mPrefsEditor;
+    Gson mGson;
+    String mJson;
+
     //request codes for Intents
     public static final int ADD_SUBJECT_REQUEST = 1;
     public static final int EDIT_SUBJECT_REQUEST = 2;
@@ -48,6 +59,9 @@ public class SubjectDisplayActivity extends ActionBarActivity {
     public static final String SUBJECT_ENTRY_ARRAYLIST = "subject arraylist";
     public static final String SUBJECT_NAME = "subject name";
     public static final String SELECTED_SUBJECT_POSITION = "selected subject position";
+
+    //string key for SharedPreferences
+    public static final String SAVED_SUBJECT_ARRAYLIST = "saved subject arraylist";
 
 
     @Override
@@ -69,19 +83,39 @@ public class SubjectDisplayActivity extends ActionBarActivity {
 
         mSubjectArray = new ArrayList<>();
 
+        //Gson sorcery
+        mPrefsEditor = getPreferences(MODE_PRIVATE).edit();
+        mGson = new Gson();
+
+
         if (savedInstanceState != null) {
             //retrieve saved SubjectEntry ArrayList, if any
             mSubjectArray = savedInstanceState.getParcelableArrayList(SUBJECT_ENTRY_ARRAYLIST);
             mSubjectName.setText(savedInstanceState.getString(SUBJECT_NAME));
             mSelectedSubjectPosition = savedInstanceState.getInt(SELECTED_SUBJECT_POSITION);
         } else {
-
-            //or else, populate ListView with sample data
-            populateSubjectList();
+            //check if there is any saved data
+            mJson = getPreferences(MODE_PRIVATE).getString(SAVED_SUBJECT_ARRAYLIST, null);
+            if (mJson != null) {
+                Type type = new TypeToken<ArrayList<SubjectEntry>>(){}.getType();
+                mSubjectArray= mGson.fromJson(mJson, type);
+            } else {
+                //or else just populate the list with sample data
+                populateSubjectList();
+            }
 
         }
-
         setUpSubjectView();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        //save subjects before app closes
+        mJson = mGson.toJson(mSubjectArray);
+        mPrefsEditor.putString(SAVED_SUBJECT_ARRAYLIST, mJson);
+        mPrefsEditor.commit();
     }
 
     private void setUpSubjectView() {
@@ -251,6 +285,7 @@ public class SubjectDisplayActivity extends ActionBarActivity {
         }
     }
 
+    //create alertdialog to confirm deletion of subject
     private AlertDialog confirmSubjDeleteDialog() {
         AlertDialog deleteSubjDialog = new AlertDialog.Builder(this)
             .setTitle(getText(R.string.delete) + " " + mSelectedSubjectEntry.getmSubject_name())

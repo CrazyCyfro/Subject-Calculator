@@ -227,6 +227,8 @@ public class GPADisplayActivity extends Activity {
                                 break;
                             } else {
                                 mWeightage.setError(getText(R.string.total_weightage_101_error)+" "+String.valueOf(Double.parseDouble(decimalFormatter.format(100-mTotalWeightage+mRaw.getWeightage())))+"%");
+                                newEntry = false;
+                                break;
                             }
                         }
                     }
@@ -391,6 +393,7 @@ public class GPADisplayActivity extends Activity {
         }
     }
 
+    //create alertdialog to confirm deletion of assignment
     private AlertDialog confirmAssignDeleteDialog() {
         AlertDialog deleteAssignDialog = new AlertDialog.Builder(this)
                 .setTitle(getText(R.string.delete)+" "+mSelectedGPAEntry.getAssignment())

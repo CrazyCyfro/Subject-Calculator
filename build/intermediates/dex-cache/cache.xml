@@ -2,13 +2,6 @@
 <items version="2" >
 
     <item
-        jar="D:\Users\Yan\AndroidStudioProjects\subject-calculator\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="D:\Users\Yan\AndroidStudioProjects\subject-calculator\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-cf851f8e0e4e5401ae1e946bc378c34ef286c55c.jar" />
-    </item>
-    <item
         jar="D:\Users\Yan\AndroidStudioProjects\subject-calculator\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -28,6 +21,20 @@
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
         <dex dex="D:\Users\Yan\AndroidStudioProjects\subject-calculator\app\build\intermediates\pre-dexed\debug\classes-97903a17e75c0ccebd6c4ff150f24e8c3d4e4fc9.jar" />
+    </item>
+    <item
+        jar="D:\Users\Yan\AndroidStudioProjects\subject-calculator\app\libs\gson-2.3.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="D:\Users\Yan\AndroidStudioProjects\subject-calculator\app\build\intermediates\pre-dexed\debug\gson-2.3.1-ee945d24ca1a04ddce54269d554496b151746ceb.jar" />
+    </item>
+    <item
+        jar="D:\Users\Yan\AndroidStudioProjects\subject-calculator\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="D:\Users\Yan\AndroidStudioProjects\subject-calculator\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-cf851f8e0e4e5401ae1e946bc378c34ef286c55c.jar" />
     </item>
 
 </items>
