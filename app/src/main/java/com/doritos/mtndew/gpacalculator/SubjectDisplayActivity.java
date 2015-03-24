@@ -1,5 +1,7 @@
 package com.doritos.mtndew.gpacalculator;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -29,8 +31,9 @@ public class SubjectDisplayActivity extends ActionBarActivity {
 
     private ListView mLVSubject;
 
-    private ArrayList<SubjectEntry> mSubjectArray;
+    private AlertDialog mAlert;
 
+    private ArrayList<SubjectEntry> mSubjectArray;
     private ArrayAdapter<SubjectEntry> mSubjectAdapter;
 
     //vars to get current selected subject entry
@@ -65,7 +68,6 @@ public class SubjectDisplayActivity extends ActionBarActivity {
         mSelectedSubjectPosition = 0;
 
         mSubjectArray = new ArrayList<>();
-
 
         if (savedInstanceState != null) {
             //retrieve saved SubjectEntry ArrayList, if any
@@ -130,33 +132,36 @@ public class SubjectDisplayActivity extends ActionBarActivity {
         mLVSubject.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
+                //check if a alert dialog is already showing because of a long click
+                if (mAlert == null || !mAlert.isShowing()) {
+                    //get the respective SubjectEntry, and store its position
+                    mSelectedSubjectEntry = (SubjectEntry)adapter.getItemAtPosition(position);
+                    mSelectedSubjectPosition = position;
 
-                //get the respective SubjectEntry, and store its position
-                mSelectedSubjectEntry = (SubjectEntry)adapter.getItemAtPosition(position);
-                mSelectedSubjectPosition = position;
+                    //starts intent to edit existing subject
+                    Intent editSubjectIntent = new Intent(SubjectDisplayActivity.this, GPADisplayActivity.class);
 
-                //starts intent to edit existing subject
-                Intent editSubjectIntent = new Intent(SubjectDisplayActivity.this, GPADisplayActivity.class);
+                    //send over subject name, SubjectEntry and request code
+                    editSubjectIntent.putExtra(GPADisplayActivity.SUBJECT_NAME, mSelectedSubjectEntry.getmSubject_name());
+                    editSubjectIntent.putExtra(GPADisplayActivity.SUBJECT_ENTRY_EDIT, mSelectedSubjectEntry);
+                    editSubjectIntent.putExtra(GPADisplayActivity.REQUEST_CODE, EDIT_SUBJECT_REQUEST);
 
-                //send over subject name, SubjectEntry and request code
-                editSubjectIntent.putExtra(GPADisplayActivity.SUBJECT_NAME, mSelectedSubjectEntry.getmSubject_name());
-                editSubjectIntent.putExtra(GPADisplayActivity.SUBJECT_ENTRY_EDIT, mSelectedSubjectEntry);
-                editSubjectIntent.putExtra(GPADisplayActivity.REQUEST_CODE, EDIT_SUBJECT_REQUEST);
+                    startActivityForResult(editSubjectIntent, EDIT_SUBJECT_REQUEST);
 
-                startActivityForResult(editSubjectIntent, EDIT_SUBJECT_REQUEST);
+                }
+
             }
         });
 
         mLVSubject.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapter, View v, int position, long id) {
+
                 mSelectedSubjectEntry = (SubjectEntry)adapter.getItemAtPosition(position);
                 mSelectedSubjectPosition = position;
 
-                mSubjectArray.remove(mSelectedSubjectEntry);
-                mSubjectAdapter.notifyDataSetChanged();
-
-                calculateCombinedGPA();
+                mAlert = confirmSubjDeleteDialog();
+                mAlert.show();
 
                 return false;
             }
@@ -237,8 +242,35 @@ public class SubjectDisplayActivity extends ActionBarActivity {
             mFinalCombinedGPA += mSubjectEntry.getmGPA();
             mSubjectNumber++;
         }
-        mFinalCombinedGPA /= mSubjectNumber;
-        mCombinedGPA.setText(String.valueOf(decimalFormatter.format(mFinalCombinedGPA)));
+
+        if (mSubjectNumber == 0) {
+            mCombinedGPA.setText("");
+        } else {
+            mFinalCombinedGPA /= mSubjectNumber;
+            mCombinedGPA.setText(String.valueOf(decimalFormatter.format(mFinalCombinedGPA)));
+        }
+    }
+
+    private AlertDialog confirmSubjDeleteDialog() {
+        AlertDialog deleteSubjDialog = new AlertDialog.Builder(this)
+            .setTitle(getText(R.string.delete) + " " + mSelectedSubjectEntry.getmSubject_name())
+            .setMessage(getText(R.string.delete_subj_cfm))
+            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    mSubjectArray.remove(mSelectedSubjectEntry);
+                    mSubjectAdapter.notifyDataSetChanged();
+
+                    calculateCombinedGPA();
+                }
+            })
+            .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    //user cancelled delete
+                }
+            })
+            .setIcon(android.R.drawable.ic_dialog_alert)
+            .create();
+            return deleteSubjDialog;
     }
 
     //define sample data and populate subject ListView

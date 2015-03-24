@@ -1,6 +1,8 @@
 package com.doritos.mtndew.gpacalculator;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -40,6 +42,7 @@ public class GPADisplayActivity extends Activity {
     private int mSelectedGPAPosition;
 
     private Toast toast;
+    private AlertDialog mAlert;
 
     private ArrayList<GPAEntry> mGPAArray;    //array of raw data as GPAEntry
 
@@ -120,8 +123,8 @@ public class GPADisplayActivity extends Activity {
             calculateWeightage();
 
             //get previous selected gpa entry
-            mSelectedGPAPosition = savedInstanceState.getInt(SELECTED_GPA_POSITION);
-            mSelectedGPAEntry = mGPAArray.get(mSelectedGPAPosition);
+            //mSelectedGPAPosition = savedInstanceState.getInt(SELECTED_GPA_POSITION);
+            //mSelectedGPAEntry = mGPAArray.get(mSelectedGPAPosition);
 
             //restore EditText fields
             mAssignment.setText(savedInstanceState.getString(ASSIGNMENT_NAME));
@@ -145,14 +148,15 @@ public class GPADisplayActivity extends Activity {
         mLVGPA.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
-                mSelectedGPAEntry = (GPAEntry)adapter.getItemAtPosition(position);
-                mSelectedGPAPosition = position;
+                if (mAlert == null || !mAlert.isShowing()) {
+                    mSelectedGPAEntry = (GPAEntry) adapter.getItemAtPosition(position);
+                    mSelectedGPAPosition = position;
 
-                mAssignment.setText(mSelectedGPAEntry.getAssignment());
-                mWeightage.setText(String.valueOf(mSelectedGPAEntry.getWeightage()));
-                mScoreReceived.setText(String.valueOf(mSelectedGPAEntry.getScore_received()));
-                mTotalScore.setText(String.valueOf(mSelectedGPAEntry.getTotal_score()));
-
+                    mAssignment.setText(mSelectedGPAEntry.getAssignment());
+                    mWeightage.setText(String.valueOf(mSelectedGPAEntry.getWeightage()));
+                    mScoreReceived.setText(String.valueOf(mSelectedGPAEntry.getScore_received()));
+                    mTotalScore.setText(String.valueOf(mSelectedGPAEntry.getTotal_score()));
+                }
             }
         });
 
@@ -162,8 +166,8 @@ public class GPADisplayActivity extends Activity {
                 mSelectedGPAEntry = (GPAEntry)adapter.getItemAtPosition(position);
                 mSelectedGPAPosition = position;
 
-                mGPAArray.remove(mSelectedGPAEntry);
-                mGPAAdapter.notifyDataSetChanged();
+                mAlert = confirmAssignDeleteDialog();
+                mAlert.show();
 
                 calculateWeightage();
 
@@ -205,24 +209,35 @@ public class GPADisplayActivity extends Activity {
                 else if (Double.parseDouble(mScoreReceived.getText().toString()) > Double.parseDouble(mTotalScore.getText().toString())) {
                     mScoreReceived.setError(getText(R.string.score_received_total_error));
                 }
-                else if (mAssignment.getText().toString().equals(mSelectedGPAEntry.getAssignment())) {
-                    if ((mTotalWeightage - mSelectedGPAEntry.getWeightage()+Double.parseDouble(mWeightage.getText().toString())) <= 100) {
-                        mSelectedGPAEntry.setWeightage(Double.parseDouble(mWeightage.getText().toString()));
-                        mSelectedGPAEntry.setScore_received(Double.parseDouble(mScoreReceived.getText().toString()));
-                        mSelectedGPAEntry.setTotal_score(Double.parseDouble(mTotalScore.getText().toString()));
-
-                        mGPAAdapter.notifyDataSetChanged();
-                        calculateWeightage();
-                    } else {
-                        mWeightage.setError(getText(R.string.weightage_101_error));
-                    }
-                }
                 //check if weightage in weightage field will exceed 100% if entered
-                else if ((mTotalWeightage+Double.parseDouble(mWeightage.getText().toString())) > 100) {
-                    //format value of remaining weightage to avoid showing long chain of decimals (value might be wrong by 0.1 if 2 dp weightages are entered :/ )
-                    mWeightage.setError(getText(R.string.total_weightage_101_error)+" "+String.valueOf(Double.parseDouble(decimalFormatter.format(100-mTotalWeightage)))+"%");
-                } else {
-                    addEntry();
+                else {
+                    Boolean newEntry = true;
+                    for (GPAEntry mRaw: mGPAArray) {
+                        if (mAssignment.getText().toString().equals(mRaw.getAssignment())) {
+                            calculateWeightage();
+                            if ((mTotalWeightage - mRaw.getWeightage()+Double.parseDouble(mWeightage.getText().toString())) <= 100) {
+                                mRaw.setWeightage(Double.parseDouble(mWeightage.getText().toString()));
+                                mRaw.setScore_received(Double.parseDouble(mScoreReceived.getText().toString()));
+                                mRaw.setTotal_score(Double.parseDouble(mTotalScore.getText().toString()));
+
+                                mGPAAdapter.notifyDataSetChanged();
+                                calculateWeightage();
+                                newEntry = false;
+
+                                break;
+                            } else {
+                                mWeightage.setError(getText(R.string.total_weightage_101_error)+" "+String.valueOf(Double.parseDouble(decimalFormatter.format(100-mTotalWeightage+mRaw.getWeightage())))+"%");
+                            }
+                        }
+                    }
+                    if (newEntry) {
+                        if ((mTotalWeightage+Double.parseDouble(mWeightage.getText().toString())) > 100) {
+                            //format value of remaining weightage to avoid showing long chain of decimals (value might be wrong by 0.1 if 2 dp weightages are entered :/ )
+                            mWeightage.setError(getText(R.string.total_weightage_101_error)+" "+String.valueOf(Double.parseDouble(decimalFormatter.format(100-mTotalWeightage)))+"%");
+                        } else {
+                            addEntry();
+                        }
+                    }
                 }
             }
         });
@@ -300,7 +315,7 @@ public class GPADisplayActivity extends Activity {
 
         //save current GPAEntry ArrayList and text in all EditText fields
         outState.putParcelableArrayList(GPA_ENTRY_ARRAYLIST, mGPAArray);
-        outState.putInt(SELECTED_GPA_POSITION, mSelectedGPAPosition);
+        //outState.putInt(SELECTED_GPA_POSITION, mSelectedGPAPosition);
         outState.putString(ASSIGNMENT_NAME,mAssignment.getText().toString());
         outState.putString(ASSIGNMENT_WEIGHTAGE, mWeightage.getText().toString());
         outState.putString(ASSIGNMENT_SCORE_RECEIVED, mScoreReceived.getText().toString());
@@ -374,6 +389,26 @@ public class GPADisplayActivity extends Activity {
         } else {
             mFinalGPA = 0.8;
         }
+    }
+
+    private AlertDialog confirmAssignDeleteDialog() {
+        AlertDialog deleteAssignDialog = new AlertDialog.Builder(this)
+                .setTitle(getText(R.string.delete)+" "+mSelectedGPAEntry.getAssignment())
+                .setMessage(getText(R.string.delete_assign_cfm))
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        mGPAArray.remove(mSelectedGPAEntry);
+                        mGPAAdapter.notifyDataSetChanged();
+                    }
+                })
+                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //user cancelled delete
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .create();
+        return deleteAssignDialog;
     }
 
     private void startGPAIntent () {
