@@ -35,6 +35,7 @@ public class GPADisplayActivity extends Activity {
     private Double mGPAPercent;
     private Double mFinalGPA;
 
+    //vars to get current selected gpa entry
     private GPAEntry mSelectedGPAEntry;
     private int mSelectedGPAPosition;
 
@@ -118,6 +119,7 @@ public class GPADisplayActivity extends Activity {
 
             calculateWeightage();
 
+            //get previous selected gpa entry
             mSelectedGPAPosition = savedInstanceState.getInt(SELECTED_GPA_POSITION);
             mSelectedGPAEntry = mGPAArray.get(mSelectedGPAPosition);
 

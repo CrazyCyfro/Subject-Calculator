@@ -18,9 +18,6 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-
-
-
 public class SubjectDisplayActivity extends ActionBarActivity {
 
 
@@ -36,6 +33,7 @@ public class SubjectDisplayActivity extends ActionBarActivity {
 
     private ArrayAdapter<SubjectEntry> mSubjectAdapter;
 
+    //vars to get current selected subject entry
     private SubjectEntry mSelectedSubjectEntry;
     private int mSelectedSubjectPosition;
 
