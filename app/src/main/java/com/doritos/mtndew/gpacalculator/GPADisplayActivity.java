@@ -36,13 +36,17 @@ public class GPADisplayActivity extends Activity {
 
     private Toast toast;
 
-    private ArrayList<GPA_Entry> mGPAArray;    //array of raw data as GPA_Entry
+    private ArrayList<GPAEntry> mGPAArray;    //array of raw data as GPAEntry
 
-    private ArrayAdapter<GPA_Entry> mGPAAdapter;   //adapter for string array
+    private ArrayAdapter<GPAEntry> mGPAAdapter;   //adapter for string array
 
-    //string keys for subject name and Subject_Entry sent over
+    //string keys for subject name and SubjectEntry sent over from SubjectDisplayActivity
     public static final String SUBJECT_NAME = "com.doritos.mtndew.gpacalculator.subject_name";
     public static final String SUBJECT_ENTRY_EDIT = "com.doritos.mtndew.gpacalculator.subject_entry_edit";
+
+    //string keys for returning and editing subjects
+    public static final String RETURNED_SUBJECT = "com.doritos.mtndew.gpacalculator.returned_subject";
+    public static final String EDITED_SUBJECT = "com.doritos.mtndew.gpacalculator.edited_subject";
 
     //request code
     public static final String REQUEST_CODE = "com.doritos.mtndew.gpacalculator.request_code";
@@ -77,10 +81,10 @@ public class GPADisplayActivity extends Activity {
 
         toast = Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT);
 
-        mGPAArray = new ArrayList<>(); //array of raw GPA_Entry items
+        mGPAArray = new ArrayList<>(); //array of raw GPAEntry items
 
         //override getView method of adapter to display text in item and sub-item fields of simple_list_item_2
-        mGPAAdapter = new ArrayAdapter<GPA_Entry>(this, android.R.layout.simple_list_item_2, android.R.id.text1, mGPAArray) {
+        mGPAAdapter = new ArrayAdapter<GPAEntry>(this, android.R.layout.simple_list_item_2, android.R.id.text1, mGPAArray) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
@@ -98,9 +102,9 @@ public class GPADisplayActivity extends Activity {
 
         if (savedInstanceState != null) {
             //restore mGPAArray and mTotalWeightage by iterating through the saved version
-            ArrayList<GPA_Entry> tempGPAArray = savedInstanceState.getParcelableArrayList(GPA_ENTRY_ARRAYLIST);
+            ArrayList<GPAEntry> tempGPAArray = savedInstanceState.getParcelableArrayList(GPA_ENTRY_ARRAYLIST);
 
-            for (GPA_Entry mTemp:tempGPAArray) {
+            for (GPAEntry mTemp:tempGPAArray) {
                 mGPAArray.add(mTemp);
                 mTotalWeightage += mTemp.getWeightage();
             }
@@ -112,7 +116,7 @@ public class GPADisplayActivity extends Activity {
             mTotalScore.setText(savedInstanceState.getString(ASSIGNMENT_TOTAL_SCORE));
 
         } else {
-            //if new Activity is started to edit existing Subject_Entry, populate GPA_Entry ListView with its items
+            //if new Activity is started to edit existing SubjectEntry, populate GPAEntry ListView with its items
             if (getIntent().getIntExtra(GPADisplayActivity.REQUEST_CODE, 0) == 2) {
                 displaySubjectForEdit();
             }
@@ -239,7 +243,7 @@ public class GPADisplayActivity extends Activity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        //save current GPA_Entry ArrayList and text in all EditText fields
+        //save current GPAEntry ArrayList and text in all EditText fields
         outState.putParcelableArrayList(GPA_ENTRY_ARRAYLIST, mGPAArray);
         outState.putString(ASSIGNMENT_NAME,mAssignment.getText().toString());
         outState.putString(ASSIGNMENT_WEIGHTAGE, mWeightage.getText().toString());
@@ -252,10 +256,10 @@ public class GPADisplayActivity extends Activity {
         //add weightage from new entry to track when weightage hits 100%
         mTotalWeightage += Double.parseDouble(mWeightage.getText().toString());
 
-        //convert entered data into GPA_Entry
-        GPA_Entry Raw_Entry = new GPA_Entry(mAssignment.getText().toString(), Double.parseDouble(mWeightage.getText().toString()), Double.parseDouble(mScoreReceived.getText().toString()), Double.parseDouble(mTotalScore.getText().toString()));
+        //convert entered data into GPAEntry
+        GPAEntry Raw_Entry = new GPAEntry(mAssignment.getText().toString(), Double.parseDouble(mWeightage.getText().toString()), Double.parseDouble(mScoreReceived.getText().toString()), Double.parseDouble(mTotalScore.getText().toString()));
 
-        //add GPA_Entry to raw array
+        //add GPAEntry to raw array
         mGPAArray.add(Raw_Entry);
 
         //update the adapter
@@ -276,12 +280,12 @@ public class GPADisplayActivity extends Activity {
         mFinalGPA = 0.0;
         mTotalWeightage = 0.0;
 
-        //recalculate weightage, in case GPA_Entry's are instantiated without addEntry()
-        for (GPA_Entry mRaw : mGPAArray) {
+        //recalculate weightage, in case GPAEntry's are instantiated without addEntry()
+        for (GPAEntry mRaw : mGPAArray) {
             mTotalWeightage += mRaw.getWeightage();
         }
         //calculate percentage based on weightage
-        for (GPA_Entry mRaw : mGPAArray) {
+        for (GPAEntry mRaw : mGPAArray) {
 
             mGPAPercent += mRaw.getWeightage() * mRaw.getScore_received() / (mRaw.getTotal_score()*mTotalWeightage * 0.01);
         }
@@ -322,12 +326,12 @@ public class GPADisplayActivity extends Activity {
 
     //sends result Intent back to SubjectDisplayActivity to add a new subject
     private void startSubmitIntent() {
-        //create the Subject_Entry to be returned
-        Subject_Entry returnedSubject = new Subject_Entry(getIntent().getStringExtra(GPADisplayActivity.SUBJECT_NAME), mGPAPercent, mFinalGPA, mGPAArray);
+        //create the SubjectEntry to be returned
+        SubjectEntry returnedSubject = new SubjectEntry(getIntent().getStringExtra(GPADisplayActivity.SUBJECT_NAME), mGPAPercent, mFinalGPA, mGPAArray);
 
         //send it to SubjectDisplayActivity
         Intent returnSubjectIntent = new Intent();
-        returnSubjectIntent.putExtra("RETURNED_SUBJECT", returnedSubject);
+        returnSubjectIntent.putExtra(GPADisplayActivity.RETURNED_SUBJECT, returnedSubject);
 
         setResult(RESULT_OK,returnSubjectIntent);
         finish();
@@ -337,11 +341,11 @@ public class GPADisplayActivity extends Activity {
     private void startEditIntent() {
 
         //create edited subject
-        Subject_Entry editedSubject = new Subject_Entry(getIntent().getStringExtra(GPADisplayActivity.SUBJECT_NAME), mGPAPercent, mFinalGPA, mGPAArray);
+        SubjectEntry editedSubject = new SubjectEntry(getIntent().getStringExtra(GPADisplayActivity.SUBJECT_NAME), mGPAPercent, mFinalGPA, mGPAArray);
 
         //send it to SubjectDisplayActivity
         Intent editSubjectIntent = new Intent();
-        editSubjectIntent.putExtra("EDITED_SUBJECT", editedSubject);
+        editSubjectIntent.putExtra(GPADisplayActivity.EDITED_SUBJECT, editedSubject);
 
         setResult(RESULT_OK, editSubjectIntent);
         finish();
@@ -350,11 +354,11 @@ public class GPADisplayActivity extends Activity {
 
     //displays existing subject when selected from SubjectDisplayActivity's ListView
     private void displaySubjectForEdit() {
-        //retrieve Subject_Entry
-        Subject_Entry subjectEntryForEdit = getIntent().getParcelableExtra(GPADisplayActivity.SUBJECT_ENTRY_EDIT);
+        //retrieve SubjectEntry
+        SubjectEntry subjectEntryForEdit = getIntent().getParcelableExtra(GPADisplayActivity.SUBJECT_ENTRY_EDIT);
 
-        //Populate mGPAArray with the Subject_Entry's GPA_Entry ArrayList and total up the weightage
-        for (GPA_Entry mEntry: subjectEntryForEdit.getmGPA_Array()) {
+        //Populate mGPAArray with the SubjectEntry's GPAEntry ArrayList and total up the weightage
+        for (GPAEntry mEntry: subjectEntryForEdit.getmGPA_Array()) {
             mGPAArray.add(mEntry);
             mTotalWeightage += mEntry.getWeightage();
         }
@@ -370,7 +374,7 @@ public class GPADisplayActivity extends Activity {
         mGPAAdapter.notifyDataSetChanged();
     }
 
-    //shows error toast when attempting to calculate or submit with no GPA_Entry's
+    //shows error toast when attempting to calculate or submit with no GPAEntry's
     private void displayEmptyError() {
 
         toast.setText(R.string.empty_array_error);

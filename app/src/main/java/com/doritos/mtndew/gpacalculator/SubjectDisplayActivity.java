@@ -32,11 +32,11 @@ public class SubjectDisplayActivity extends ActionBarActivity {
 
     private ListView mLVSubject;
 
-    private ArrayList<Subject_Entry> mSubjectArray;
+    private ArrayList<SubjectEntry> mSubjectArray;
 
-    private ArrayAdapter<Subject_Entry> mSubjectAdapter;
+    private ArrayAdapter<SubjectEntry> mSubjectAdapter;
 
-    private Subject_Entry mSelectedSubjectEntry;
+    private SubjectEntry mSelectedSubjectEntry;
     private int mSelectedPosition;
 
     //request codes for Intents
@@ -63,14 +63,14 @@ public class SubjectDisplayActivity extends ActionBarActivity {
         mLVSubject = (ListView)this.findViewById(R.id.subjectListView);
 
         //defines the subject in ListView that is selected
-        mSelectedSubjectEntry = new Subject_Entry("",0.0,0.0,null);
+        mSelectedSubjectEntry = new SubjectEntry("",0.0,0.0,null);
         mSelectedPosition = 0;
 
         mSubjectArray = new ArrayList<>();
 
 
         if (savedInstanceState != null) {
-            //retrieve saved Subject_Entry ArrayList, if any
+            //retrieve saved SubjectEntry ArrayList, if any
             mSubjectArray = savedInstanceState.getParcelableArrayList(SUBJECT_ENTRY_ARRAYLIST);
             mSubjectName.setText(savedInstanceState.getString(SUBJECT_NAME));
             mSelectedPosition = savedInstanceState.getInt(SUBJECT_POSITION);
@@ -87,7 +87,7 @@ public class SubjectDisplayActivity extends ActionBarActivity {
     private void setUpSubjectView() {
 
         //override getView method of adapter to display text in item and sub-item fields of simple_list_item_2
-        mSubjectAdapter = new ArrayAdapter<Subject_Entry>(this, android.R.layout.simple_list_item_2, android.R.id.text1, mSubjectArray) {
+        mSubjectAdapter = new ArrayAdapter<SubjectEntry>(this, android.R.layout.simple_list_item_2, android.R.id.text1, mSubjectArray) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
@@ -128,18 +128,18 @@ public class SubjectDisplayActivity extends ActionBarActivity {
             }
         });
 
-        //when a Subject_Entry in the ListView is clicked
+        //when a SubjectEntry in the ListView is clicked
         mLVSubject.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
 
-                //get the respective Subject_Entry, and store its position
-                mSelectedSubjectEntry = (Subject_Entry)adapter.getItemAtPosition(position);
+                //get the respective SubjectEntry, and store its position
+                mSelectedSubjectEntry = (SubjectEntry)adapter.getItemAtPosition(position);
                 mSelectedPosition = position;
 
                 //starts intent to edit existing subject
                 Intent editSubjectIntent = new Intent(SubjectDisplayActivity.this, GPADisplayActivity.class);
 
-                //send over subject name, Subject_Entry and request code
+                //send over subject name, SubjectEntry and request code
                 editSubjectIntent.putExtra(GPADisplayActivity.SUBJECT_NAME, mSelectedSubjectEntry.getmSubject_name());
                 editSubjectIntent.putExtra(GPADisplayActivity.SUBJECT_ENTRY_EDIT, mSelectedSubjectEntry);
                 editSubjectIntent.putExtra(GPADisplayActivity.REQUEST_CODE, EDIT_SUBJECT_REQUEST);
@@ -187,8 +187,8 @@ public class SubjectDisplayActivity extends ActionBarActivity {
             //if initial request was to add a new subject
             if (resultCode == RESULT_OK) {
 
-                //retrieve new Subject_Entry and add it to mSubjectArray
-                Subject_Entry returnedSubject = data.getParcelableExtra("RETURNED_SUBJECT");
+                //retrieve new SubjectEntry and add it to mSubjectArray
+                SubjectEntry returnedSubject = data.getParcelableExtra(GPADisplayActivity.RETURNED_SUBJECT);
                 mSubjectArray.add(returnedSubject);
 
                 mSubjectName.setText("");
@@ -198,9 +198,9 @@ public class SubjectDisplayActivity extends ActionBarActivity {
             if (resultCode == RESULT_OK) {
 
                 //retrieve new edited subject
-                Subject_Entry editedSubject = data.getParcelableExtra("EDITED_SUBJECT");
+                SubjectEntry editedSubject = data.getParcelableExtra(GPADisplayActivity.EDITED_SUBJECT);
 
-                //find the outdated Subject_Entry with the position saved earlier
+                //find the outdated SubjectEntry with the position saved earlier
                 mSelectedSubjectEntry = mSubjectAdapter.getItem(mSelectedPosition);
 
                 //update its parameters
@@ -219,7 +219,7 @@ public class SubjectDisplayActivity extends ActionBarActivity {
     private void calculateCombinedGPA() {
         Double mFinalCombinedGPA = 0.0;
         int mSubjectNumber = 0;
-        for (Subject_Entry mSubjectEntry : mSubjectArray) {
+        for (SubjectEntry mSubjectEntry : mSubjectArray) {
             mFinalCombinedGPA += mSubjectEntry.getmGPA();
             mSubjectNumber++;
         }
@@ -229,42 +229,42 @@ public class SubjectDisplayActivity extends ActionBarActivity {
 
     //define sample data and populate subject ListView
     private void populateSubjectList() {
-        GPA_Entry gpa_1 = new GPA_Entry("Dank Memes Test 420", 10, 420, 420);
-        GPA_Entry gpa_2 = new GPA_Entry("Quickscoping 101",10,0,101);
-        GPA_Entry gpa_3 = new GPA_Entry("Weed agriculture",10, 99, 420);
+        GPAEntry gpa_1 = new GPAEntry("Dank Memes Test 420", 10, 420, 420);
+        GPAEntry gpa_2 = new GPAEntry("Quickscoping 101",10,0,101);
+        GPAEntry gpa_3 = new GPAEntry("Weed agriculture",10, 99, 420);
 
-        ArrayList<GPA_Entry> SwegList = new ArrayList<>();
+        ArrayList<GPAEntry> SwegList = new ArrayList<>();
         SwegList.add(gpa_1);
         SwegList.add(gpa_2);
         SwegList.add(gpa_3);
 
-        Subject_Entry SwegSubject = new Subject_Entry("Sweg",calcPercent(SwegList),calcGPA(calcPercent(SwegList)), SwegList);
+        SubjectEntry SwegSubject = new SubjectEntry("Sweg",calcPercent(SwegList),calcGPA(calcPercent(SwegList)), SwegList);
 
-        GPA_Entry gpa_4 = new GPA_Entry("Android Programming Test", 10, 1, 99);
-        GPA_Entry gpa_5 = new GPA_Entry("Zammil", 10, 99, 99);
-        GPA_Entry gpa_6 = new GPA_Entry("Investment banking", 10, 100, 1000);
+        GPAEntry gpa_4 = new GPAEntry("Android Programming Test", 10, 1, 99);
+        GPAEntry gpa_5 = new GPAEntry("Zammil", 10, 99, 99);
+        GPAEntry gpa_6 = new GPAEntry("Investment banking", 10, 100, 1000);
 
-        ArrayList<GPA_Entry> CEPList = new ArrayList<>();
+        ArrayList<GPAEntry> CEPList = new ArrayList<>();
         CEPList.add(gpa_4);
         CEPList.add(gpa_5);
         CEPList.add(gpa_6);
 
-        Subject_Entry CEPSubject = new Subject_Entry("CEP",calcPercent(CEPList),calcGPA(calcPercent(CEPList)),CEPList);
+        SubjectEntry CEPSubject = new SubjectEntry("CEP",calcPercent(CEPList),calcGPA(calcPercent(CEPList)),CEPList);
 
         mSubjectArray.add(SwegSubject);
         mSubjectArray.add(CEPSubject);
 
     }
 
-    //calculate and return percentage with GPA_Entry ArrayList
-    private double calcPercent(ArrayList<GPA_Entry> GPAArray) {
+    //calculate and return percentage with GPAEntry ArrayList
+    private double calcPercent(ArrayList<GPAEntry> GPAArray) {
         Double percent = 0.0;
         Double totalWeightage = 0.0;
         DecimalFormat df = new DecimalFormat("#.0");
-        for (GPA_Entry entry : GPAArray) {
+        for (GPAEntry entry : GPAArray) {
             totalWeightage += entry.getWeightage();
         }
-        for (GPA_Entry entry : GPAArray) {
+        for (GPAEntry entry : GPAArray) {
             percent += entry.getWeightage() * entry.getScore_received() / (entry.getTotal_score()*totalWeightage * 0.01);
         }
         percent = Double.parseDouble(df.format(percent));
