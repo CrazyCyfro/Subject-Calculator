@@ -213,6 +213,8 @@ public class GPADisplayActivity extends Activity {
                         //check entered assignment name against all existing assignments
                         if (mAssignment.getText().toString().equals(mRaw.getAssignment())) {
                             calculateWeightage();
+                            //if true, not new entry
+                            newEntry = false;
                             if ((mTotalWeightage - mRaw.getWeightage()+Double.parseDouble(mWeightage.getText().toString())) <= 100) {
                                 //if assignment exists, edit it
                                 mRaw.setWeightage(Double.parseDouble(mWeightage.getText().toString()));
@@ -222,15 +224,11 @@ public class GPADisplayActivity extends Activity {
                                 mGPAAdapter.notifyDataSetChanged();
                                 calculateWeightage();
 
-                                //therefore not a new entry
-                                newEntry = false;
-
                                 break;
                             } else {
 
                                 //if new weightage for assignment exceeds available weightage from other assignments, display error
                                 mWeightage.setError(getText(R.string.total_weightage_101_error)+" "+String.valueOf(Double.parseDouble(decimalFormatter.format(100-mTotalWeightage+mRaw.getWeightage())))+"%");
-                                newEntry = false;
                                 break;
                             }
                         }
