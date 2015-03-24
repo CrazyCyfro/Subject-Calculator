@@ -6,14 +6,14 @@ import android.os.Parcelable;
 /**
  * Created by Yan Wei on 24/2/2015.
  */
-public class GPA_Entry implements Parcelable{
+public class GPAEntry implements Parcelable{
 
     private String mAssignment;
     private double mWeightage;
     private double mScore_received;
     private double mTotal_score;
 
-    public GPA_Entry(String assignment, double weightage, double score_received, double total_score){
+    public GPAEntry(String assignment, double weightage, double score_received, double total_score){
         mAssignment = assignment;
         mWeightage = weightage;
         mScore_received = score_received;
@@ -66,18 +66,18 @@ public class GPA_Entry implements Parcelable{
     }
 
     // this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods
-    public static final Parcelable.Creator<GPA_Entry> CREATOR = new Parcelable.Creator<GPA_Entry>() {
-        public GPA_Entry createFromParcel(Parcel in) {
-            return new GPA_Entry(in);
+    public static final Parcelable.Creator<GPAEntry> CREATOR = new Parcelable.Creator<GPAEntry>() {
+        public GPAEntry createFromParcel(Parcel in) {
+            return new GPAEntry(in);
         }
 
-        public GPA_Entry[] newArray(int size) {
-            return new GPA_Entry[size];
+        public GPAEntry[] newArray(int size) {
+            return new GPAEntry[size];
         }
     };
 
     // example constructor that takes a Parcel and gives you an object populated with it's values
-    private GPA_Entry(Parcel in) {
+    private GPAEntry(Parcel in) {
         mAssignment = in.readString();
         mWeightage = in.readDouble();
         mScore_received = in.readDouble();

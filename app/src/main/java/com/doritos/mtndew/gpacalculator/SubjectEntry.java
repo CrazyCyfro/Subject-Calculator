@@ -8,14 +8,14 @@ import java.util.ArrayList;
 /**
  * Created by Yan on 17/3/2015.
  */
-public class Subject_Entry implements Parcelable{
+public class SubjectEntry implements Parcelable{
 
     private String mSubject_name;
     private double mPercentage;
     private double mGPA;
-    private ArrayList<GPA_Entry> mGPA_Array;
+    private ArrayList<GPAEntry> mGPA_Array;
 
-    public Subject_Entry(String mSubject_name, double mPercentage, double mGPA, ArrayList<GPA_Entry> mGPA_Array) {
+    public SubjectEntry(String mSubject_name, double mPercentage, double mGPA, ArrayList<GPAEntry> mGPA_Array) {
         this.mSubject_name = mSubject_name;
         this.mPercentage = mPercentage;
         this.mGPA = mGPA;
@@ -46,11 +46,11 @@ public class Subject_Entry implements Parcelable{
         this.mGPA = mGPA;
     }
 
-    public ArrayList<GPA_Entry> getmGPA_Array() {
+    public ArrayList<GPAEntry> getmGPA_Array() {
         return mGPA_Array;
     }
 
-    public void setmGPA_Array(ArrayList<GPA_Entry> mGPA_Array) {
+    public void setmGPA_Array(ArrayList<GPAEntry> mGPA_Array) {
         this.mGPA_Array = mGPA_Array;
     }
 
@@ -66,23 +66,23 @@ public class Subject_Entry implements Parcelable{
         out.writeTypedList(mGPA_Array);
     }
 
-    public static final Parcelable.Creator<Subject_Entry> CREATOR = new Parcelable.Creator<Subject_Entry>() {
-        public Subject_Entry createFromParcel(Parcel in) {
-            return new Subject_Entry(in);
+    public static final Parcelable.Creator<SubjectEntry> CREATOR = new Parcelable.Creator<SubjectEntry>() {
+        public SubjectEntry createFromParcel(Parcel in) {
+            return new SubjectEntry(in);
         }
 
-        public Subject_Entry[] newArray(int size) {
-            return new Subject_Entry[size];
+        public SubjectEntry[] newArray(int size) {
+            return new SubjectEntry[size];
         }
     };
 
-    private Subject_Entry(Parcel in){
+    private SubjectEntry(Parcel in){
 
         mSubject_name = in.readString();
         mPercentage = in.readDouble();
         mGPA = in.readDouble();
 
         mGPA_Array = new ArrayList<>();
-        in.readTypedList(mGPA_Array, GPA_Entry.CREATOR);
+        in.readTypedList(mGPA_Array, GPAEntry.CREATOR);
     }
 }
