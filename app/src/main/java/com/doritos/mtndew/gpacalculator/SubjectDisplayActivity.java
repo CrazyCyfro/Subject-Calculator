@@ -37,7 +37,7 @@ public class SubjectDisplayActivity extends ActionBarActivity {
     private ArrayAdapter<SubjectEntry> mSubjectAdapter;
 
     private SubjectEntry mSelectedSubjectEntry;
-    private int mSelectedPosition;
+    private int mSelectedSubjectPosition;
 
     //request codes for Intents
     public static final int ADD_SUBJECT_REQUEST = 1;
@@ -46,13 +46,13 @@ public class SubjectDisplayActivity extends ActionBarActivity {
     //string keys for savedInstanceState
     public static final String SUBJECT_ENTRY_ARRAYLIST = "subject arraylist";
     public static final String SUBJECT_NAME = "subject name";
-    public static final String SUBJECT_POSITION = "subject position";
+    public static final String SELECTED_SUBJECT_POSITION = "selected subject position";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_subject);
+        setContentView(R.layout.activity_subject_display);
 
         mAddSubjectButton = (Button)this.findViewById(R.id.addSubjectButton);
         mSubjectName = (EditText)this.findViewById(R.id.subject_name);
@@ -64,7 +64,7 @@ public class SubjectDisplayActivity extends ActionBarActivity {
 
         //defines the subject in ListView that is selected
         mSelectedSubjectEntry = new SubjectEntry("",0.0,0.0,null);
-        mSelectedPosition = 0;
+        mSelectedSubjectPosition = 0;
 
         mSubjectArray = new ArrayList<>();
 
@@ -73,7 +73,7 @@ public class SubjectDisplayActivity extends ActionBarActivity {
             //retrieve saved SubjectEntry ArrayList, if any
             mSubjectArray = savedInstanceState.getParcelableArrayList(SUBJECT_ENTRY_ARRAYLIST);
             mSubjectName.setText(savedInstanceState.getString(SUBJECT_NAME));
-            mSelectedPosition = savedInstanceState.getInt(SUBJECT_POSITION);
+            mSelectedSubjectPosition = savedInstanceState.getInt(SELECTED_SUBJECT_POSITION);
         } else {
 
             //or else, populate ListView with sample data
@@ -130,11 +130,12 @@ public class SubjectDisplayActivity extends ActionBarActivity {
 
         //when a SubjectEntry in the ListView is clicked
         mLVSubject.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
             public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
 
                 //get the respective SubjectEntry, and store its position
                 mSelectedSubjectEntry = (SubjectEntry)adapter.getItemAtPosition(position);
-                mSelectedPosition = position;
+                mSelectedSubjectPosition = position;
 
                 //starts intent to edit existing subject
                 Intent editSubjectIntent = new Intent(SubjectDisplayActivity.this, GPADisplayActivity.class);
@@ -145,6 +146,21 @@ public class SubjectDisplayActivity extends ActionBarActivity {
                 editSubjectIntent.putExtra(GPADisplayActivity.REQUEST_CODE, EDIT_SUBJECT_REQUEST);
 
                 startActivityForResult(editSubjectIntent, EDIT_SUBJECT_REQUEST);
+            }
+        });
+
+        mLVSubject.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapter, View v, int position, long id) {
+                mSelectedSubjectEntry = (SubjectEntry)adapter.getItemAtPosition(position);
+                mSelectedSubjectPosition = position;
+
+                mSubjectArray.remove(mSelectedSubjectEntry);
+                mSubjectAdapter.notifyDataSetChanged();
+
+                calculateCombinedGPA();
+
+                return false;
             }
         });
     }
@@ -175,10 +191,10 @@ public class SubjectDisplayActivity extends ActionBarActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        //save mSubjectArray, mSubjectName EditText field and mSelectedPosition
+        //save mSubjectArray, mSubjectName EditText field and mSelectedSubjectPosition
         outState.putParcelableArrayList(SUBJECT_ENTRY_ARRAYLIST, mSubjectArray);
         outState.putString(SUBJECT_NAME,mSubjectName.getText().toString());
-        outState.putInt(SUBJECT_POSITION,mSelectedPosition);
+        outState.putInt(SELECTED_SUBJECT_POSITION,mSelectedSubjectPosition);
     }
 
     //interpret GPADisplayActivity results
@@ -201,7 +217,7 @@ public class SubjectDisplayActivity extends ActionBarActivity {
                 SubjectEntry editedSubject = data.getParcelableExtra(GPADisplayActivity.EDITED_SUBJECT);
 
                 //find the outdated SubjectEntry with the position saved earlier
-                mSelectedSubjectEntry = mSubjectAdapter.getItem(mSelectedPosition);
+                mSelectedSubjectEntry = mSubjectAdapter.getItem(mSelectedSubjectPosition);
 
                 //update its parameters
                 mSelectedSubjectEntry.setmPercentage(editedSubject.getmPercentage());

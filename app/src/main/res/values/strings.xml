@@ -10,16 +10,18 @@
     <string name="score_received">Your score</string>
     <string name="total_score">Total score</string>
     <string name="subject_name">Subject name</string>
-    <string name="button_submit">Add</string>
+    <string name="add">Add</string>
     <string name="calculate">Calculate</string>
     <string name="clear">Clear</string>
     <string name="submit">Submit</string>
+    <string name="edit">Edit</string>
+    <string name="clear_text">Clear Text</string>
     <string name="title_activity_gpa">Final GPA</string>
 
 
     <!--Errors-->
     <string name="empty_error">Field cannot be empty!</string>
-    <string name="weightage_101_error">Weightage cannot be more than 100%!</string>
+    <string name="weightage_101_error">Total weightage cannot be more than 100%!</string>
     <string name="score_received_total_error">Score received cannot be more than total score!</string>
     <string name="invalid_double_error">Invalid field!</string>
     <string name="empty_array_error">You have no entries!</string>

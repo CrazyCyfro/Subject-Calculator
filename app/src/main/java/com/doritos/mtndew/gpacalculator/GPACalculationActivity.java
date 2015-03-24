@@ -16,7 +16,7 @@ public class GPACalculationActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gpa);
+        setContentView(R.layout.activity_gpa_calculation);
 
         //set text for GPA Activity
         mGPA = (TextView)findViewById(R.id.final_gpa);

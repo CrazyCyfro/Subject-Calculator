@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,13 +27,16 @@ public class GPADisplayActivity extends Activity {
     private Button mCalculateButton;    //"calculate" button
     private Button mClearButton;         //"clear button
     private Button mSubmitButton;       //"submit" button
-    private ListView mLVItem;           //items in the list
+    private ListView mLVGPA;           //items in the list
 
     private Double mTotalWeightage;    //total weightage of entries
     private DecimalFormat decimalFormatter; //DecimalFormat to allow for rounding
 
     private Double mGPAPercent;
     private Double mFinalGPA;
+
+    private GPAEntry mSelectedGPAEntry;
+    private int mSelectedGPAPosition;
 
     private Toast toast;
 
@@ -52,7 +56,8 @@ public class GPADisplayActivity extends Activity {
     public static final String REQUEST_CODE = "com.doritos.mtndew.gpacalculator.request_code";
 
     //string keys for savedInstanceState
-    public static final String GPA_ENTRY_ARRAYLIST = "gpa_entry arraylist";
+    public static final String GPA_ENTRY_ARRAYLIST = "gpa entry arraylist";
+    public static final String SELECTED_GPA_POSITION = "selected gpa position";
     public static final String ASSIGNMENT_NAME = "assignment name";
     public static final String ASSIGNMENT_WEIGHTAGE = "assignment weightage";
     public static final String ASSIGNMENT_SCORE_RECEIVED = "assignment score received";
@@ -61,23 +66,26 @@ public class GPADisplayActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_gpa_display);
 
         mAssignment = (EditText)this.findViewById(R.id.assignmentEditText);
         mWeightage = (EditText)this.findViewById(R.id.weightageEditText);
         mScoreReceived = (EditText)this.findViewById(R.id.scoreEditText);
         mTotalScore = (EditText)this.findViewById(R.id.maxScoreEditText);
-        mAddButton = (Button)this.findViewById(R.id.button_add);
+        mAddButton = (Button)this.findViewById(R.id.add_button);
         mCalculateButton = (Button)this.findViewById(R.id.calculate_button);
         mClearButton = (Button)this.findViewById(R.id.clear_button);
         mSubmitButton = (Button)this.findViewById(R.id.submit_button);
-        mLVItem = (ListView)this.findViewById(R.id.listView_items);
+        mLVGPA = (ListView)this.findViewById(R.id.listView_items);
 
         mTotalWeightage = 0.0;
         decimalFormatter = new DecimalFormat("#.0");    //set rounding to 1 dp
 
         mGPAPercent = 0.0;
         mFinalGPA = 0.0;
+
+        mSelectedGPAEntry = new GPAEntry("",0.0,0.0,0.0);
+        mSelectedGPAPosition = 0;
 
         toast = Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT);
 
@@ -98,7 +106,7 @@ public class GPADisplayActivity extends Activity {
         };
 
         //set the adapter for the list items
-        mLVItem.setAdapter(mGPAAdapter);
+        mLVGPA.setAdapter(mGPAAdapter);
 
         if (savedInstanceState != null) {
             //restore mGPAArray and mTotalWeightage by iterating through the saved version
@@ -106,8 +114,12 @@ public class GPADisplayActivity extends Activity {
 
             for (GPAEntry mTemp:tempGPAArray) {
                 mGPAArray.add(mTemp);
-                mTotalWeightage += mTemp.getWeightage();
             }
+
+            calculateWeightage();
+
+            mSelectedGPAPosition = savedInstanceState.getInt(SELECTED_GPA_POSITION);
+            mSelectedGPAEntry = mGPAArray.get(mSelectedGPAPosition);
 
             //restore EditText fields
             mAssignment.setText(savedInstanceState.getString(ASSIGNMENT_NAME));
@@ -127,6 +139,35 @@ public class GPADisplayActivity extends Activity {
     }
 
     private void setUpView() {
+
+        mLVGPA.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
+                mSelectedGPAEntry = (GPAEntry)adapter.getItemAtPosition(position);
+                mSelectedGPAPosition = position;
+
+                mAssignment.setText(mSelectedGPAEntry.getAssignment());
+                mWeightage.setText(String.valueOf(mSelectedGPAEntry.getWeightage()));
+                mScoreReceived.setText(String.valueOf(mSelectedGPAEntry.getScore_received()));
+                mTotalScore.setText(String.valueOf(mSelectedGPAEntry.getTotal_score()));
+
+            }
+        });
+
+        mLVGPA.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapter, View v, int position, long id) {
+                mSelectedGPAEntry = (GPAEntry)adapter.getItemAtPosition(position);
+                mSelectedGPAPosition = position;
+
+                mGPAArray.remove(mSelectedGPAEntry);
+                mGPAAdapter.notifyDataSetChanged();
+
+                calculateWeightage();
+
+                return false;
+            }
+        });
 
         mAddButton.setOnClickListener(new View.OnClickListener() {
 
@@ -161,6 +202,18 @@ public class GPADisplayActivity extends Activity {
                 //check if score received is more than total score
                 else if (Double.parseDouble(mScoreReceived.getText().toString()) > Double.parseDouble(mTotalScore.getText().toString())) {
                     mScoreReceived.setError(getText(R.string.score_received_total_error));
+                }
+                else if (mAssignment.getText().toString().equals(mSelectedGPAEntry.getAssignment())) {
+                    if ((mTotalWeightage - mSelectedGPAEntry.getWeightage()+Double.parseDouble(mWeightage.getText().toString())) <= 100) {
+                        mSelectedGPAEntry.setWeightage(Double.parseDouble(mWeightage.getText().toString()));
+                        mSelectedGPAEntry.setScore_received(Double.parseDouble(mScoreReceived.getText().toString()));
+                        mSelectedGPAEntry.setTotal_score(Double.parseDouble(mTotalScore.getText().toString()));
+
+                        mGPAAdapter.notifyDataSetChanged();
+                        calculateWeightage();
+                    } else {
+                        mWeightage.setError(getText(R.string.weightage_101_error));
+                    }
                 }
                 //check if weightage in weightage field will exceed 100% if entered
                 else if ((mTotalWeightage+Double.parseDouble(mWeightage.getText().toString())) > 100) {
@@ -245,6 +298,7 @@ public class GPADisplayActivity extends Activity {
 
         //save current GPAEntry ArrayList and text in all EditText fields
         outState.putParcelableArrayList(GPA_ENTRY_ARRAYLIST, mGPAArray);
+        outState.putInt(SELECTED_GPA_POSITION, mSelectedGPAPosition);
         outState.putString(ASSIGNMENT_NAME,mAssignment.getText().toString());
         outState.putString(ASSIGNMENT_WEIGHTAGE, mWeightage.getText().toString());
         outState.putString(ASSIGNMENT_SCORE_RECEIVED, mScoreReceived.getText().toString());
@@ -253,8 +307,6 @@ public class GPADisplayActivity extends Activity {
 
     private void addEntry() {
 
-        //add weightage from new entry to track when weightage hits 100%
-        mTotalWeightage += Double.parseDouble(mWeightage.getText().toString());
 
         //convert entered data into GPAEntry
         GPAEntry Raw_Entry = new GPAEntry(mAssignment.getText().toString(), Double.parseDouble(mWeightage.getText().toString()), Double.parseDouble(mScoreReceived.getText().toString()), Double.parseDouble(mTotalScore.getText().toString()));
@@ -271,19 +323,26 @@ public class GPADisplayActivity extends Activity {
         mScoreReceived.setText("");
         mTotalScore.setText("");
 
+        calculateWeightage();
+
+    }
+
+    private void calculateWeightage() {
+        mTotalWeightage = 0.0;
+
+        //recalculate weightage
+        for (GPAEntry mRaw : mGPAArray) {
+            mTotalWeightage += mRaw.getWeightage();
+        }
     }
 
     //calculates GPA from scratch and updates all relevant fields (mGPAPercent, mFinalGPA, mTotalWeightage)
     private void calculateGPA() {
+        calculateWeightage();
 
         mGPAPercent = 0.0;
         mFinalGPA = 0.0;
-        mTotalWeightage = 0.0;
 
-        //recalculate weightage, in case GPAEntry's are instantiated without addEntry()
-        for (GPAEntry mRaw : mGPAArray) {
-            mTotalWeightage += mRaw.getWeightage();
-        }
         //calculate percentage based on weightage
         for (GPAEntry mRaw : mGPAArray) {
 
